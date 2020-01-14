@@ -2,7 +2,7 @@ import java.util.Date;
 
 public class Kunde {
 
-	private int kundenNummer = 1;
+	private int kundenNummer = 0;
 	private String strasse;
 	private String ort;
 	private int plz;
