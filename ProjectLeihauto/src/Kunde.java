@@ -2,13 +2,13 @@ import java.util.Date;
 
 public class Kunde {
 
-	private int kundenNummer = 0;
+	private int kundenNummer = 1;
 	private String strasse;
 	private String ort;
 	private int plz;
 	private String land;
 	private int alter;
-	private int telefonNummer; // string? <- falsch in klassendiagramm? oder wegen abständen?
+	private int telefonNummer; // string? <- falsch in klassendiagramm? oder wegen abstÃ¤nden?
 	private String email;
 	private String username;
 	private String password;
@@ -17,7 +17,7 @@ public class Kunde {
 	private long kkNummer;
 	private Date kkAblaufdatum; // nicht string
 	private int kkPruefnummer;
-//neu dazugefügt
+//neu dazugefÃ¼gt
 	private String lockReason;
 
 	public void lockKunde(String lockReason) {
