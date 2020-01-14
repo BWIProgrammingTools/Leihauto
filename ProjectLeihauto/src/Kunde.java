@@ -17,29 +17,59 @@ public class Kunde {
 	private long kkNummer;
 	private Date kkAblaufdatum; // nicht string
 	private int kkPruefnummer;
+//neu dazugefügt
+	private String lockReason;
 
-	public void lockKunde() {
-
+	public void lockKunde(String lockReason) {
+		this.lockReason = lockReason;
+		setGesperrt(true);
 	}
 
 	public void unlockKunde() {
+		setLockReason("");
+		setGesperrt(false);
+	}
+
+	public String passwordAendern(String olgPassword, String password) { // kontrolle bzw login
+
+		if (password == oldPassword) {
+			this.password = password;
+		} else {
+			System.err.println("falsches password");
+			return;
+		}
+	}
+
+	public void passwordVergessen(int kundenNummer, String email, int alter) { // kontrolle und wirklich void?
+		if (this.email == email) {
+			if (this.alter == alter) {
+				getPassword();
+			}
+		} else {
+			System.err.println("user nicht gefunden");
+			return;
+		}
 
 	}
 
-	public void passwordAendern(String password) { // kontrolle bzw login
-		this.password = password;
+	public void passwordZurueckSetzen(int kundenNummer, String email, int alter) {
+		if (this.email == email) {
+			if (this.alter == alter) {
+				setPassword(1234);
+				System.out.println("Wir haben Ihr Password auf 1234 gesetzt");
+			}
+		} else {
+			System.err.println("user nicht gefunden");
+		}
 	}
 
-	public void passwordVergessen() { // kontrolle und wirklich void?
-
-	}
-
-	public void passwordZurueckSetzen() { // wirklich void? nicht doppelt mit vergessen?
-
-	}
-
-	public void login() {
-
+	public String login(String password) {
+		if (this.password == password) {
+			System.out.println("eingeloggt"); // brauchen wir ein logged in status?
+		} else {
+			System.err.println("falsches password");
+			return;
+		}
 	}
 
 	public void adKunde() {
@@ -165,5 +195,12 @@ public class Kunde {
 	public void setKkPruefnummer(int kkPruefnummer) {
 		this.kkPruefnummer = kkPruefnummer;
 	}
+
+	public void setLockReason(String lockReason) {
+		this.lockReason = lockReason;
+	}
+
+	public int getLockReasaon() {
+		return lockReason;
 
 }
